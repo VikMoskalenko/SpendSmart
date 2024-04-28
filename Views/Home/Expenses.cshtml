@@ -19,7 +19,12 @@
             </tr>
         </thead>
         <tbody>
-            @{
+            @if(Model== null)
+            {
+                <tr><td colspan="5" style="text-align:center">empty</td></tr>
+            }
+            else
+            {
                 foreach(var expense in Model)
                 {
                     <tr>

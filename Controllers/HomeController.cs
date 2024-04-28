@@ -27,10 +27,10 @@ namespace SpendSmart.Controllers
             
             return View();
         }
-        public IActionResult CreateEditExpense(int id)
+        public IActionResult CreateEditExpense(int? id)
             //deleted ? from int
         {
-            if ( id != 0)
+            if ( id != null)
             {
                 var expensesInDb = _context.Expenses.SingleOrDefault(x => x.Id == id);
                 return View(expensesInDb);
@@ -52,6 +52,7 @@ namespace SpendSmart.Controllers
             if (model.Id == 0)
             {
                 _context.Expenses.Add(model);
+                _context.SaveChanges();
             }
             else
             {
